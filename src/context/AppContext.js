@@ -7,6 +7,7 @@ export function AppContextProvider({children}){
     const [loading,setLoading] = useState(false);
     const [posts,setPosts]= useState([]);
     const [page,setPage] = useState(1);
+    const [darkMode,setDarkMode] = useState(false);
     const [totalPages,setTotalPages] = useState(null);
 
     // DATA FILLING
@@ -32,7 +33,6 @@ export function AppContextProvider({children}){
     const handlePageChange=(page)=>{
         setPage(page);
         fetchBlogPosts(page);
-
     }
 
     const value = {
@@ -45,7 +45,9 @@ export function AppContextProvider({children}){
         totalPages,
         setTotalPages,
         fetchBlogPosts,
-        handlePageChange
+        handlePageChange,
+        darkMode,
+        setDarkMode
     }
 
     return <AppContext.Provider value= {value}>

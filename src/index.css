@@ -1,27 +1,171 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 /* css background-image generated using https://10015.io/tools/css-background-pattern-generator */
 .background {
-  background-image: radial-gradient(#ffffff 2.5px, transparent 2.5px), radial-gradient(#ffffff 2.5px, transparent 2.5px);
+  background-image: radial-gradient(rgb(180, 251, 218) 2.5px, transparent 2.5px), radial-gradient(#ffffff 2.5px, transparent 2.5px);
   background-size: 36px 36px;
   background-position: 0 0, 18px 18px;
-  background-color: #b1d2ff;
+  background-color: #ffffff;
 }
+.backgroundb {
+   background-image: radial-gradient(rgb(13, 51, 34) 2.5px, transparent 2.5px), radial-gradient(rgb(13, 51, 34) 2.5px, transparent 2.5px);
+   background-size: 36px 36px;
+   background-position: 0 0, 18px 18px;
+   background-color: #000000;
+ }
 
 *{
-   font-family: Georgia, 'Times New Roman', Times, serif;
+   box-sizing: border-box;
+   margin:0;
+   padding:0;
+   font-family: 'Outfit', sans-serif; 
 }
 
+.toggle-checkbox {
+   position: absolute;
+   opacity: 0;
+   cursor: pointer;
+   height: 0;
+   width: 0;
+ }
+ 
+ .toggle-slot {
+   font-size: 10px;
+   position: relative;
+   height: 3.5em;
+   width: 7em;
+   border: 0px solid transparent;
+   border-radius: 10em;
+   background-color: rgb(241, 219, 158);
+   transition: background-color 250ms;
+ }
+ 
+ .toggle-checkbox:checked ~ .toggle-slot {
+   background-color: #374151;
+ }
+ 
+ .toggle-button {
+   transform: translate(0.3em, 0.25em);
+   position: absolute;
+   height: 3em;
+   width: 3em;
+   border-radius: 50%;
+   background-color: #faf5ef;
+   box-shadow: inset 0px 0px 0px 0.75em #ffbb52;
+   transition: background-color 250ms, border-color 250ms, transform 500ms cubic-bezier(.26,2,.46,.71);
+ }
+ 
+ .toggle-checkbox:checked ~ .toggle-slot .toggle-button {
+   background-color: #485367;
+   box-shadow: inset 0px 0px 0px 0.75em white;
+   transform: translate(3.65em, 0.25em);
+ }
+ 
+ .sun-icon {
+   position: absolute;
+   height: 6em;
+   width: 6em;
+   color: #ffbb52;
+ }
+ 
+ .sun-icon-wrapper {
+   position: absolute;
+   height: 6em;
+   width: 6em;
+   opacity: 1;
+   transform: translate(2em, 2em) rotate(15deg);
+   transform-origin: 50% 50%;
+   transition: opacity 150ms, transform 500ms cubic-bezier(.26,2,.46,.71);
+ }
+ 
+ .toggle-checkbox:checked ~ .toggle-slot .sun-icon-wrapper {
+   opacity: 0;
+   transform: translate(3em, 2em) rotate(0deg);
+ }
+ 
+ .moon-icon {
+   position: absolute;
+   height: 6em;
+   width: 6em;
+   color: white;
+ }
+ 
+ .moon-icon-wrapper {
+   position: absolute;
+   height: 6em;
+   width: 6em;
+   opacity: 0;
+   transform: translate(11em, 2em) rotate(0deg);
+   transform-origin: 50% 50%;
+   transition: opacity 150ms, transform 500ms cubic-bezier(.26,2.5,.46,.71);
+ }
+ 
+ .toggle-checkbox:checked ~ .toggle-slot .moon-icon-wrapper {
+   opacity: 1;
+   transform: translate(2em, 2em) rotate(-15deg);
+ }
+
+.btn{
+   padding:12px 32px;
+   font-size: 1rem;
+   text-transform: uppercase;
+   background: #6fb9a4;
+   border: 2px solid #6fb9a4;
+   font-weight: 600;
+   cursor:pointer
+}
+.btn-light{
+   background: transparent;
+   color:white
+}
+
+.btn:hover{
+   background-color: rbga(255,255,255,0.2);
+   color: #fff;
+   transition: 0.3s ease-in-out;
+}
 
 .spinner {
    width: 56px;
    height: 56px;
    border-radius: 50%;
-   border: 9px solid #474bff;
+   border: 9px solid #065f46;
    animation: spinner-bulqg1 0.8s infinite linear alternate,
         spinner-oaa3wk 1.6s infinite linear;
+}
+
+.hamburger{
+   display: none;
+}
+
+@media screen and (max-width:1024px){
+   .nav-menu{
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 99vh;
+      position: absolute;
+      top:0;
+      z-index:-3;
+      transition: 0.2s ease-out;
+      background: rgb(165, 255, 213);
+   }
+   .nav-menu li{
+      padding: 1.5rem;
+      font-size: 2rem;
+      width: 100%;
+      text-align: center;
+      border-bottom: 2px solid #4b4b4b;
+   }
+
+   .hamburger{
+      display: initial;
+   }
+   
 }
 
 @keyframes spinner-bulqg1 {
